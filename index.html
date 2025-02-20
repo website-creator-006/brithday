@@ -24,11 +24,17 @@
         h1 {
             font-size: 3rem;
             margin: 10px;
-            animation: glow 1.5s infinite alternate;
+            animation: glow 1.5s infinite alternate, redColorChange 3s infinite alternate;
+            color:red;
         }
         @keyframes glow {
             0% { text-shadow: 0 0 5px #fff, 0 0 10px #ffccff, 0 0 15px #ff99cc; }
             100% { text-shadow: 0 0 10px #fff, 0 0 20px #ff66b2, 0 0 30px #ff3399; }
+        }
+        @keyframes redColorChange {
+            0% { color: #ff3366; }
+            50% { color: #ff0000; }
+            100% { color: #ff3366; }
         }
         .message {
             font-size: 1.5rem;
@@ -71,11 +77,12 @@
     </style>
 </head>
 <body>
-    <audio id="birthdayMusic" src="m.mp3.mp3" autoplay loop></audio>
-
+    <!-- Background Music -->
+    <audio id="birthdayMusic" src="m.mp3" autoplay loop></audio> <!-- Ensure "m.mp3" is your audio file -->
+    
     <button class="btn" onclick="showSurprise()">Surprise!</button>
     <div id="surprise-content" class="hidden">
-        <h1>Happy Birthday, Megha! 🎂💖</h1>
+        <h1>Happy Birthday,Megha!🎉💍🤍</h1>
         <p class="message">
             "You make my world brighter just by being in it. Wishing you a day filled with love, laughter, and endless happiness!"
             <span class="quote">"On this special day, I just want you to know how incredibly special you are to me." 💕</span>
@@ -85,6 +92,7 @@
             I hope this surprise makes you so impressed, and I think you haven't seen this kind of wish from anybody.😊</span>
         </p>
     </div>
+    
     <script>
         function createElement(type) {
             let element = document.createElement("div");
@@ -98,6 +106,7 @@
             document.querySelector('.btn').style.display = 'none';
             document.getElementById('surprise-content').classList.remove('hidden');
             setInterval(() => createElement("balloon"), 500);
+
             setInterval(() => createElement("heart"), 700);
         }
     </script>
