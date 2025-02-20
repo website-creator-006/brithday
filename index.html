@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ff99cc, #ff6699);
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            flex-direction: column;
+        }
+        .hidden {
+            display: none;
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 10px;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #fff, 0 0 10px #ffccff, 0 0 15px #ff99cc; }
+            100% { text-shadow: 0 0 10px #fff, 0 0 20px #ff66b2, 0 0 30px #ff3399; }
+        }
+        .message {
+            font-size: 1.5rem;
+            width: 80%;
+            max-width: 600px;
+        }
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            background: #ff3366;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            z-index: 10;
+            margin-top: 20px;
+        }
+        .balloon, .heart {
+            position: absolute;
+            bottom: -50px;
+            width: 50px;
+            height: 70px;
+            opacity: 0.7;
+            animation: floatUp 5s linear infinite;
+        }
+        .balloon {
+            background: red;
+            border-radius: 50%;
+        }
+        .heart {
+            width: 30px;
+            height: 30px;
+            background: pink;
+            clip-path: path("M14 8l6-6a4 4 0 0 1 5.7 5.7L14 20.4 2.3 7.7A4 4 0 1 1 8 2l6 6z");
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.8); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <button class="btn" onclick="showSurprise()">Surprise!</button>
+    <div id="surprise-content" class="hidden">
+        <h1>Happy Birthday, Megha! 🎂💖</h1>
+        <p class="message">
+            "You make my world brighter just by being in it. Wishing you a day filled with love, laughter, and endless happiness!"
+            <span class="quote">"On this special day, I just want you to know how incredibly special you are to me." 💕</span>
+            <span class="pickup-line">"Are you a magician? Because whenever I look at you, everyone else disappears!" 😉
+            I want to be your lifelong best friend. Will you accept me as your lifelong friend?
+            Once again, wish you many more happy returns of the day.🎉❤️ 
+            I hope this surprise makes you so impressed, and I think you haven't seen this kind of wish from anybody.😊</span>
+        </p>
+        <audio autoplay loop>
+            <source src="m.mp3.mp3" type="audio/mp3">
+        </audio>
+    </div>
+    <script>
+        function createElement(type) {
+            let element = document.createElement("div");
+            element.className = type;
+            element.style.left = Math.random() * 100 + "vw";
+            element.style.animationDuration = Math.random() * 3 + 3 + "s";
+            document.body.appendChild(element);
+            setTimeout(() => { element.remove(); }, 5000);
+        }
+        function showSurprise() {
+            document.querySelector('.btn').style.display = 'none';
+            document.getElementById('surprise-content').classList.remove('hidden');
+            setInterval(() => createElement("balloon"), 500);
+            setInterval(() => createElement("heart"), 700);
+        }
+    </script>
+</body>
+</html>
